@@ -4,7 +4,7 @@
 - Heroku CLI
 - Xcode command line tools
 
-# I . Development on Host Steps
+# I . Steps for Development on Host
 
 ## 1.Creating Dockerfile
 
