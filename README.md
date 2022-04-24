@@ -8,8 +8,19 @@
 
 ## 1. Creating Dockerfile
 
-- First create the docker file
-- Resist the urge to pull from the latest version of gcc compiler
+- First create the docker file, in the folder cppbox, with the content
+
+```
+FROM gcc:7.3.0
+RUN apt-get -qq update
+RUN apt-get -qq upgrade
+RUN apt-get -qq install cmake
+RUN apt-get -qq install libboost-all-dev=1.62.0.1
+RUN apt-get -qq install build-essential libtcmalloc-minimal4 && \
+    ln -s /usr/lib/libtcmalloc_minimal.so.4 /usr/lib/libtcmalloc_minimal.so
+```
+
+- **Resist the urge to pull from the latest version** of gcc compiler
 - -qq installs quietly
 
 ## 2. Building Dockerfile
@@ -119,4 +130,50 @@ docker run -v /Users/pi/Desktop/cppweb:/usr/src/cppweb -p 8080:8080 -e PORT=8080
 
 Go to [http://localhost:8080/](http://localhost:8080/) on browser to see the effect.
 
-# II . Development on Host Steps
+# II . Deployment on Heroku
+
+The steps to deploy the C++ web server on heroku are
+
+- Containerize the app
+- Heroku login
+- Create Heroku App
+- Push the container and release it
+- Test in browser
+
+## 1. Containerize the app
+
+Run the latest working version
+
+```
+docker run -ti cppbox:latest bash
+```
+
+Then, open another terminal tab, **go to cppweb directory**, and
+
+```
+docker ps
+```
+
+to list all the running containers.
+
+Then, copy the container id **(may vary each time, replace the containerID)**
+
+```
+docker cp . 8b4dbe4519c6:/usr/src/cppweb
+```
+
+Then commit
+
+```
+docker commit 8b4dbe4519c6  hello_crow:latest
+```
+
+Then, create a new Dockerfile in hello_crow directory, with the content
+
+```
+FROM hello_crow
+WORKDIR /usr/src/cppweb/hello_crow/build
+CMD ["./hello_crow"]
+```
+
+## 1. Containerize the app
