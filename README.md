@@ -6,13 +6,13 @@
 
 # I . Steps for Development on Host
 
-## 1.Creating Dockerfile
+## 1. Creating Dockerfile
 
 - First create the docker file
 - Resist the urge to pull from the latest version of gcc compiler
 - -qq installs quietly
 
-## 2.Building Dockerfile
+## 2. Building Dockerfile
 
 - Then, enter the cppbox directory, and build dockerfile using the following
 
@@ -22,7 +22,7 @@ docker build -t cppbox .
 
 **IMPORTANT**: Make sure that docker daemon is running.
 
-## 3.Working in dockerfile
+## 3. Working in dockerfile
 
 - Once the dockerfile is built, get into the docker container using
 
@@ -44,7 +44,7 @@ Once you see dozens of libboost files, the install is successful.
 exit
 ```
 
-## 4.Add Volume
+## 4. Add Volume
 
 Volumes are added to share access between the host machine and the docker container.
 
@@ -66,11 +66,11 @@ cd /usr/src/cppweb
 touch MY_FILE.txt
 ```
 
-## 5.Install Crow
+## 5. Install Crow
 
 Go to [Crow Project's Github](https://github.com/ipkn/crow), and download the header file.
 
-## 6.Now create a new project (Actually begin working)
+## 6. Now create a new project (Actually begin working)
 
 Use
 
@@ -80,7 +80,7 @@ cd hello_crow
 cp ../crow_all.h .
 ```
 
-## 7.Build Crow (and the app)
+## 7. Build Crow (and the app)
 
 Create a new file and CMakeLists
 
@@ -102,7 +102,7 @@ Once makefile is generated, **wile in build directory**, compile the app using
 make
 ```
 
-## 8.Access from browser
+## 8. Access from browser
 
 **IMPORTANT**, to access from local host, we need to open the port from docker. Use
 
