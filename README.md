@@ -104,11 +104,15 @@ make
 
 ## 8. Access from browser
 
-**IMPORTANT**, to access from local host, we need to open the port from docker. Use
+**IMPORTANT**, to access from local host, we need to open the port from docker. First, exit the current container.
 
 ```
 exit
+```
 
+Then, use
+
+```
 docker run -v /Users/pi/Desktop/cppweb:/usr/src/cppweb -p 8080:8080 -e PORT=8080  -ti cppbox:latest /usr/src/cppweb/hello_crow/build/hello_crow
 
 ```
