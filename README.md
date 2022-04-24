@@ -8,7 +8,7 @@
 
 ## 1. Creating Dockerfile
 
-- First create the docker file, in the folder cppbox, with the content
+First create the docker file, in the folder cppbox, with the content
 
 ```
 FROM gcc:7.3.0
@@ -20,12 +20,12 @@ RUN apt-get -qq install build-essential libtcmalloc-minimal4 && \
     ln -s /usr/lib/libtcmalloc_minimal.so.4 /usr/lib/libtcmalloc_minimal.so
 ```
 
-- **Resist the urge to pull from the latest version** of gcc compiler
-- -qq installs quietly
+**Resist the urge to pull from the latest version** of gcc compiler
+-qq installs quietly
 
 ## 2. Building Dockerfile
 
-- Then, enter the cppbox directory, and build dockerfile using the following
+Then, enter the cppbox directory, and build dockerfile using the following
 
 ```
 docker build -t cppbox .
@@ -35,13 +35,13 @@ docker build -t cppbox .
 
 ## 3. Working in dockerfile
 
-- Once the dockerfile is built, get into the docker container using
+Once the dockerfile is built, get into the docker container using
 
 ```
 docker run -ti cppbox:latest bash
 ```
 
-- Check if required libraries are installed (e.g. libboost)
+Check if required libraries are installed (e.g. libboost)
 
 ```
 find /usr -name libboost*.*
@@ -49,7 +49,7 @@ find /usr -name libboost*.*
 
 Once you see dozens of libboost files, the install is successful.
 
-- To exit container, type
+To exit container, type
 
 ```
 exit
@@ -65,13 +65,13 @@ To create volume, use
 docker run -v /Users/pi/Desktop/cppweb:/usr/src/cppweb -ti cppbox:latest bash
 ```
 
-- Then get into the cppbox directory.
+Then get into the cppbox directory.
 
 ```
 cd /usr/src/cppweb
 ```
 
-- To create a file in the container, use
+To create a file in the container, use
 
 ```
 touch MY_FILE.txt
@@ -176,4 +176,24 @@ WORKDIR /usr/src/cppweb/hello_crow/build
 CMD ["./hello_crow"]
 ```
 
-## 1. Containerize the app
+## 2. Heroku login
+
+Go to hello_crow directory
+
+```
+cd hello_crow
+```
+
+Log into heroku using
+
+```
+heroku login
+```
+
+Then
+
+```
+heroku container:login
+```
+
+## 3. Create Heroku App
