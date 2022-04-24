@@ -197,3 +197,37 @@ heroku container:login
 ```
 
 ## 3. Create Heroku App
+
+Create a new heroku app with
+
+```
+heroku create
+```
+
+**Take note of the info given here**
+
+Then, build docker with
+
+```
+docker build -t hello_crow .
+```
+
+Then, push to heroku with the command below. (Repalce pacific-taiga-30294 with the app name given)
+
+```
+heroku container:push web -a pacific-taiga-30294
+```
+
+**[IMPORTANT] Then, release the container**
+
+```
+heroku container:release web -a pacific-taiga-30294
+```
+
+Then, open the app on web browser using
+
+```
+heroku open -a pacific-taiga-30294
+```
+
+# III. Building Websites
