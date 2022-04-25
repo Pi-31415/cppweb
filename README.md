@@ -4,6 +4,14 @@
 - Heroku CLI
 - Xcode command line tools
 
+> IMPORTANT : Build the app within the docker container, not outside. Otherwise, the boost library and other dependencies will not be found.
+
+**For testing the hello_crow, after setting up cppbox, use**
+
+```
+docker run -v /Users/pi/Desktop/cppweb:/usr/src/cppweb -p 8080:8080 -e PORT=8080  -ti hello_crow:latest /usr/src/cppweb/hello_crow/build/hello_crow
+```
+
 # I . Steps for Development on Host
 
 ## 1. Creating Dockerfile
@@ -231,3 +239,19 @@ heroku open -a pacific-taiga-30294
 ```
 
 # III. Building Websites
+
+Create a new public folder.
+
+## 1. Add a new html
+
+Add the html. Make routing edits. **Make in docker container** and run the server again.
+
+**Again, important, for testing the hello_crow, after setting up cppbox, use**
+
+```
+docker run -v /Users/pi/Desktop/cppweb:/usr/src/cppweb -p 8080:8080 -e PORT=8080  -ti hello_crow:latest /usr/src/cppweb/hello_crow/build/hello_crow
+```
+
+## 2. Serve static content
+
+Add static content in public folder.
